@@ -11,20 +11,18 @@
         }
     ],
 
-    "minimum-stability": "dev",
-
     "require": {
-        "silex/silex": "*",
-        "twig/twig": "*",
+        "silex/silex": "~2.0@dev",
+        "twig/twig": "dev-master",
         "twig/extensions": "*",
         "symfony/config": "2.6",
         "symfony/security": "2.6",
         "symfony/translation": "2.6",
         "symfony/twig-bridge": "2.6",
         "symfony/validator": "2.6",
-        "freepius/php-asset": "*",
-        "freepius/php-model": "*",
-        "freepius/silex-extended": "*"
+        "freepius/php-asset": "dev-master",
+        "freepius/php-model": "dev-master",
+        "freepius/silex-extended": "dev-master"
     },
 
     "require-dev": {
