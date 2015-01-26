@@ -1,0 +1,104 @@
+{% set currentNav = 'blog' %}
+
+{% extends "layout.html.twig" %}
+
+{% from "register/macros.twig" import register_table %}
+
+{% import "carto.twig" as carto %}
+
+
+{% block stylesheets %}
+
+    {{ css('jquery.dataTables') }}
+    {{ carto.cssBase() }}
+
+    <style>
+        #map { height: 400px; }
+
+        header > .actions {
+            clear: both;
+            float: none;
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    {{ js('jquery.dataTables') }}
+    {{ carto.jsBase() }}
+
+    <script>
+        var register = {
+            deleteMessage: "{{ 'register.deleting.confirm' | trans | raw }}",
+            geoCoords: [
+                {%- for entry in entries if entry.geoCoords -%}
+                    [{{ entry.geoCoords }}],
+                {%- endfor -%}
+            ],
+        };
+
+        $.DataTableLanguage = "{{ asset('jquery.dataTables.'~app.locale~'.json') }}";
+    </script>
+
+    <script src="/js/app-register-home.js"></script>
+
+{% endblock %}
+
+
+{% block main_inner %}
+
+<header>
+    <h1>{{ 'register.home'|trans }}</h1>
+
+    <div class="actions">
+        <!-- Create register entries -->
+        <a href="/register/post" class="btn btn-success">
+            <i class="fa fa-plus-circle fa-inverse"></i> {{ 'Create'|trans }}
+        </a>
+
+        <!-- Update register entries depending on dates -->
+        <form action="/register/post" method="get" class="form-inline">
+            <button type="submit" class="btn btn-info">
+                <i class="fa fa-pencil-square-o"></i>
+                {{ 'Update'|trans }}
+            </button>
+            <input type="text" name="from" placeholder="{{ 'register.placeholder.from'|trans }}" class="form-control">
+            <input type="text" name="to"   placeholder="{{ 'register.placeholder.to'  |trans }}" class="form-control">
+        </form>
+    </div>
+</header>
+
+
+<table id="register" class="display compact">
+    <thead>
+        <tr>
+            <th>{{ 'register.field.datetime'|trans }}</th>
+            <th>{{ 'register.field.geoCoords'|trans }}</th>
+            <th>{{ 'register.field.temperature'|trans }}</th>
+            <th>{{ 'register.field.weather'|trans }}</th>
+            <th>{{ 'register.field.message'|trans }}</th>
+            <th>{{ 'Actions'|trans }}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for entry in entries %}
+            <tr>{{ register_table(entry) }}</tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<!-- Modal with map -->
+<div id="modal-map" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="map"></div>
+        </div>
+    </div>
+</div>
+<!-- END_Modal with map -->
+
+{% endblock %}

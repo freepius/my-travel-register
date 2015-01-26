@@ -1,0 +1,28 @@
+{% extends "layout.html.twig" %}
+
+{% from 'form.twig' import submit %}
+
+
+{% block stylesheets %}
+    <style>
+        input[type="password"] { width: 200px; }
+    </style>
+{% endblock %}
+
+{% block main_inner %}
+    <headr>
+        <h1>{{ 'Login'|trans }}</h1>
+    </header>
+
+    <p>
+        <form action="/admin/login_check" method="post" class="form-inline">
+            <input type="hidden" name="_username" value="admin">
+            <input type="password" name="_password" value="" class="form-control" placeholder="{{ 'Password'|trans }}">
+            {{ submit() }}
+
+            {% if error %}
+                <span class="text-danger">{{ error|trans }}</span>
+            {% endif %}
+        </form>
+    </p>
+{% endblock %}

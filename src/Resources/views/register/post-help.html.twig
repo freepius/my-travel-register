@@ -1,0 +1,79 @@
+{% from "macros.twig" import indent %}
+
+{% if app.locale == 'fr' %}
+
+    Saisir, dans la <a href="#entries">zone de texte ci-dessous</a>,
+    une <i>entrée au registre de voyage</i> par ligne.
+    <br>
+    Chaque entrée est composée des données suivantes, séparées par le <i>dièse</i> <b>#</b> :
+    <ul>
+        <li>
+            <i class="fa fa-calendar"></i>
+            une <b>date unique</b> au format <nobr><i>« AAAA-MM-JJ hh:mm:ss »</i></nobr>
+            {{ indent('ex : 2013-05-28 12:42:03') }}
+        </li>
+        <li>
+            <i class="fa fa-globe"></i>
+            des <b>coordonées géographiques</b> au format <nobr>« Latitude , Longitude »</nobr>,
+            exprimées en <i>degrés décimaux</i>
+            {{ indent('ex : 46.242000 , -2.837461') }}
+        </li>
+        <li>
+            <i class="fa fa-sort-amount-desc"></i>
+            une <b>température</b> exprimée en <i>degrés Celsius (°C)</i>
+            {{ indent('ex : 32') }}
+        </li>
+        <li>
+            <i class="fa fa-cloud"></i>
+            une information <b>météo</b> exprimée par un <i>nombre de 1 à 7</i>
+            {{ indent(
+                '1 = Grand soleil ; 2 = Quelques nuages ; 3 = Ciel couvert ; ' ~
+                '4 = Pluie faible ; 5 = Pluie forte ; 6 = Orage, tempête ; 7 = Brouillard'
+            ) }}
+        </li>
+        <li>
+            <i class="fa fa-leaf"></i>
+            un <b>message</b> comportant 500 caractères maximum
+            {{ indent('ex : Superbe lever de soleil sur fond bleu violacé. Bonne humeur ! :-)') }}
+        </li>
+    </ul>
+
+{% else %}
+
+    Write, in the <a href="#entries">textarea below</a>,
+    an <i>entry in the travel register</i> per line.
+    <br>
+    Each entry is composed of the following data, separated by a <i>sharp</i> <b>#</b> :
+    <ul>
+        <li>
+            <i class="fa fa-calendar"></i>
+            a <b>unique date</b> in format <nobr><i>"YYYY-MM-DD hh:mm:ss"</i></nobr>
+            {{ indent('eg: 2013-05-28 12:42:03') }}
+        </li>
+        <li>
+            <i class="fa fa-map-marker"></i>
+            <b>geographic coordinates</b> in format <nobr>"Latitude , Longitude"</nobr>,
+            expressed in <i>decimal degrees</i>
+            {{ indent('eg: 46.242000 , -2.837461') }}
+        </li>
+        <li>
+            <i class="fa fa-sort-amount-desc"></i>
+            a <b>temperature</b> expressed in <i>degrees Celsius (°C)</i>
+            {{ indent('eg: 32') }}
+        </li>
+        <li>
+            <i class="fa fa-cloud"></i>
+            a <b>meteo</b> information expressed by a <i>number between 1 and 7</i>
+            {{ indent(
+                '1 = Sunny ; 2 = Partly cloudy ; 3 = Overcast ; ' ~
+                '4 = Rain ; 5 = Heavy rain ; 6 = Storm ; 7 = Fog'
+            ) }}
+        </li>
+        <li>
+            <i class="fa fa-leaf"></i>
+            a <b>message</b> having 500 characters maximum
+            {{ indent('eg: Beautiful sunrise on violet-blue background. Good mood! :-)') }}
+        </li>
+    </ul>
+
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+
+{% block main_inner %}
+    <header>
+        <h1>{{ 'admin.home'|trans }}</h1>
+    </header>
+
+    <!-- Register -->
+    <h2>{{ 'register.home'|trans }}</h2>
+
+    <ul>
+        <li><a href="/map">          {{ 'register.map'    |trans }}</a></li>
+        <li><a href="/register/home">{{ 'register.list'   |trans }}</a></li>
+        <li><a href="/register/post">{{ 'register.posting'|trans }}</a></li>
+    </ul>
+
+    <!-- Other -->
+    <h2>{{ 'Other'|trans }}</h2>
+
+    <ul>
+        <li><a href="/admin/cache-clear">{{ 'admin.cacheClear'|trans }}</a></li>
+        <li><a href="/admin/logout">{{ 'Logout'|trans }}</a></li>
+    </ul>
+
+{% endblock %}

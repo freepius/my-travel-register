@@ -1,0 +1,73 @@
+{##
+ # Summary :
+ #  -> cssBase
+ #  -> jsBase
+ #  -> cssFull
+ #  -> jsFull
+ #}
+
+
+{% macro cssBase() %}
+    {{ css(
+        'leaflet',
+        'leaflet.awesome-markers',
+        'leaflet.label',
+        'leaflet.pancontrol',
+        'leaflet.zoomslider'
+    ) }}
+{% endmacro %}
+
+
+{% macro jsBase() %}
+    <script>
+        window.bingMapsAPIKey = "{{- app['register.config']['bing_maps_api_key'] -}}";
+    </script>
+
+    {{ js(
+        'leaflet',
+        'leaflet.awesome-markers',
+        'leaflet.label',
+        'leaflet.pancontrol',
+        'leaflet.plugins.bing',
+        'leaflet.zoomslider',
+        'maps.stamen'
+    ) }}
+
+    <script src="/js/app-carto.js"></script>
+{% endmacro %}
+
+
+{% macro cssFull() %}
+    {{ _self.cssBase() }}
+    {{ css('leaflet.markercluster') }}
+{% endmacro %}
+
+
+{% macro jsFull() %}
+    {{ _self.jsBase() }}
+    {{ js('leaflet.markercluster', 'leaflet.oms') }}
+
+    <script>
+        function getClusterLabel(markers)
+        {
+            var label = '<p>' + markers[0].getLabel()._content + '</p>' +
+                        '<p>' + markers[1].getLabel()._content + '</p>';
+
+            if (markers.length === 3) {
+                label += '<p>' + markers[2].getLabel()._content + '</p>';
+            }
+
+            if (markers.length > 3) {
+                label += '{{ "map.clusterLabel.other"|trans }}<br>';
+            }
+
+            label += '<small>' +
+                        '<i class="fa fa-caret-right"></i> '  +
+                        '{{ "map.clusterLabel.all"|trans }}' +
+                     '</small>';
+
+            return label.replace('OTHER_L', markers.length - 2)
+                        .replace('TOTAL_L', markers.length);
+        }
+    </script>
+{% endmacro %}

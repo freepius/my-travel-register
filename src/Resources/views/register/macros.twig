@@ -1,0 +1,65 @@
+{##
+ # Summary :
+ #  -> register_render
+ #  -> register_table
+ #}
+
+{% macro register_render(e) %}
+{% spaceless %}
+
+    {{- e._id | localizeddate('short', 'short') -}}
+
+    {%- if e.temperature or e.meteo -%}
+        &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
+        {{- e.temperature is not null ? (e.temperature ~ '°C ') -}}
+        {{- e.meteo                   ? ("<img src='/images/weather/"~e.meteo~".png'>") | raw -}}
+    {%- endif -%}
+
+    <br>{{- e.message -}}
+
+{% endspaceless %}
+{% endmacro %}
+
+{% macro register_table(e) %}
+    <td data-order="{{ e._id }}">
+        {{ e._id | localizeddate('short', 'short') }}
+    </td>
+
+    <td>
+        <a class="geoCoords" href="#">{{ e.geoCoords }}</a>
+    </td>
+
+    {% if e.temperature is null %}
+        <td data-order="-1"></td>
+    {% else %}
+        <td data-order="{{ e.temperature }}">
+            {{ e.temperature }}°C
+        </td>
+    {% endif %}
+
+    {% if e.meteo is null %}
+        <td data-order="-1"></td>
+    {% else %}
+        {% set descWeather = ('register.weather.'~e.meteo) | trans %}
+
+        <td data-order="{{ e.meteo }}" data-serch="{{ descWeather }}">
+            <img src='/images/weather/{{ e.meteo }}.png' title="{{ descWeather }}">
+        </td>
+    {% endif %}
+
+    <td>{{ e.message }}</td>
+
+    <!-- Actions on register entry -->
+    <td>
+        <!-- Update -->
+        <a href="/register/post?from={{ e._id }}&to={{ e._id }}" title="{{ 'Update'|trans }}">
+            <i class="fa fa-pencil"></i></a>
+
+        <!-- Delete -->
+        <a href="/register/{{ e._id }}/delete" title="{{ 'Delete'|trans }}"
+            class="delete" data-id="{{ e._id }}"
+        >
+            <i class="fa fa-trash-o"></i>
+        </a>
+    </td>
+{% endmacro %}

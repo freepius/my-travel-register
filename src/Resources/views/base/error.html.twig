@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+
+{% from "macros.twig" import indent, linked_img %}
+
+{% block main_inner %}
+    <header>
+        <h1>
+            {{ ('error.title.' ~ (code == 404 ? '404' : 'other')) | trans }}
+        </h1>
+    </header>
+
+    <p class="lead">
+        {{ ('error.message.' ~ (code == 404 ? '404' : 'other')) | trans }}
+
+        {{ message ? indent(message) }}
+
+        <br><br>
+
+        {{ 'error.go2home' | trans | raw }}
+
+        <br>
+
+        <small>{{ 'error.contactUs' | trans | raw }}</small>
+    </p>
+{% endblock %}

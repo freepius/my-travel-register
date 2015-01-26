@@ -1,0 +1,71 @@
+#main {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#main > header { margin-bottom: 20px; }
+
+#main > header > h1 {
+    float: left;
+    margin-top: 0;
+}
+
+
+/**
+ * Clearfix
+ */
+#main > header:before,
+#main > header:after {
+    content: " ";
+    display: table;
+}
+#main > header:after { clear: both; }
+
+
+/**
+ * Actions bar
+ */
+div.actions { float: right; }
+
+div.actions > * {
+    float: left;
+    margin: 0 2px;
+}
+
+
+/**
+ * Logout link
+ */
+body > a.logout {
+    font-size: 1.2em;
+}
+@media (min-width: 992px) {
+    body > a.logout {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: 10px 10px;
+        -moz-transform-origin: 10px 10px;
+        -ms-transform-origin: 10px 10px;
+        transform-origin: 10px 10px;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+    }
+}
+@media (max-width: 991px) {
+    body > a.logout {
+        position: absolute;
+    }
+}
+
+
+/**
+ * Leaflet styles
+ */
+.leaflet-label {
+    white-space: normal !important;
+    z-index: 1000 !important;
+    min-width: 300px;
+}

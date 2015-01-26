@@ -1,0 +1,23 @@
+{% from "register/macros.twig" import register_render %}
+
+
+var register =
+{
+    geoCoords: [
+        {%- for entry in entries -%}
+            [{{ entry.geoCoords }}],
+        {%- endfor -%}
+    ],
+
+    labels: [
+        {% for entry in entries %}
+            "{{ register_render(entry) }}",
+        {% endfor %}
+    ],
+
+    hasMessage: [
+        {%- for entry in entries -%}
+            {{ entry.message ? '1' : '0' }},
+        {%- endfor -%}
+    ]
+};

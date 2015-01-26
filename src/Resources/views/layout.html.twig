@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}My Travel Register{% endblock %}</title>
+
+    <!-- Styles
+    ================================================== -->
+
+    {{ css('bootstrap', 'font-awesome') }}
+
+    <link href="/css/main.css" rel="stylesheet">
+
+    {% block stylesheets %}{% endblock %}
+
+    {{ js('old-browsers.cdn') }}
+</head>
+<body>
+
+    {# If authenticated, allow to logout #}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="/admin/logout" class="logout">
+            <i class="fa fa-power-off"></i>
+            <span>{{ 'Logout'|trans }}</span>
+        </a>
+    {% endif %}
+
+
+    <!-- Header
+    ================================================== -->
+    {% include 'header.html.twig' %}
+
+
+    <!-- Notifications
+    ================================================== -->
+    <section id="notifications">
+    {% block notifications %}
+        {% for level in ['success', 'danger', 'info', 'warning']
+            if app.session.flashbag.has(level)
+        %}
+
+            <div class="alert alert-{{ level }}">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+
+                {% set messages = app.session.flashbag.get(level) %}
+
+                {% if messages|length > 1 %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message|raw }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ messages[0]|raw }}
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    {% endblock %}
+    </section>
+
+
+    <!-- Main content
+    ================================================== -->
+    {% block main %}
+        <section id="main" class="container">
+            {% block main_inner %}{% endblock %}
+        </section>
+    {% endblock %}
+
+
+    <!-- Footer
+    ================================================== -->
+    {% include 'footer.html.twig' %}
+
+
+    <!-- Javascripts
+    ================================================== -->
+
+    {{ js('jquery', 'bootstrap') }}
+
+    <script>window.locale = "{{ app.locale }}";</script>
+    <script src="/js/app.js"></script>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
