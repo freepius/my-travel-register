@@ -95,7 +95,7 @@ class Register implements ControllerProviderInterface
             );
 
             foreach ($entries as & $e) {
-                $e = [$e['_id'], $e['geoCoords'], $e['temperature'], $e['meteo'], $e['message']];
+                $e = [$e['_id'], $e['geoCoords'], $e['temperature'], $e['weather'], $e['message']];
                 $e = implode(' # ', $e);
             }
         }
@@ -194,12 +194,12 @@ class Register implements ControllerProviderInterface
      *
      *      multi-SMS format (see isMultiSms() function)
      *      OR
-     *      date # geoCoords # temperature # meteo and security code # message
+     *      date # geoCoords # temperature # weather and security code # message
      *
      *      => date          : mandatory ; format = MMDDhhmm (implicitly : year === current year ; seconds === 00)
      *      => geoCoords     : optional  ; if invalid => set to null
      *      => temperature   : optional  ; if invalid => set to null
-     *      => meteo         : optional  ; if invalid => set to null
+     *      => weather       : optional  ; if invalid => set to null
      *      => security code : mandatory ; one digit === sum of all date digits MOD 10
      *      => message       : optional  ; if > 500 chars => truncate it
      *
@@ -269,7 +269,7 @@ class Register implements ControllerProviderInterface
             date('Y'), substr($d, 0, 2), substr($d, 2, 2), substr($d, 4, 2), substr($d, 6, 2)
         );
 
-        // Remove security code in the meteo field
+        // Remove security code in the weather field
         $httpEntry[3] = substr($httpEntry[3], 0, -1);
 
         // Try to validate the register entry
@@ -285,7 +285,7 @@ class Register implements ControllerProviderInterface
         // Clear or correct invalid data
         if (@ $errors['geoCoords'])   { $entry['geoCoords']   = null; }
         if (@ $errors['temperature']) { $entry['temperature'] = null; }
-        if (@ $errors['meteo'])       { $entry['meteo']       = null; }
+        if (@ $errors['weather'])     { $entry['weather']     = null; }
         if (@ $errors['message'])     { $entry['message'] = substr($entry['message'], 0, 500); }
 
         $this->getRepository()->store($entry);

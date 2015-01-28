@@ -9,10 +9,10 @@
 
     {{- e._id | localizeddate('short', 'short') -}}
 
-    {%- if e.temperature or e.meteo -%}
+    {%- if e.temperature or e.weather -%}
         &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
         {{- e.temperature is not null ? (e.temperature ~ '°C ') -}}
-        {{- e.meteo                   ? ("<img src='/images/weather/"~e.meteo~".png'>") | raw -}}
+        {{- e.weather                 ? ("<img src='/images/weather/"~e.weather~".png'>") | raw -}}
     {%- endif -%}
 
     <br>{{- e.message -}}
@@ -37,13 +37,13 @@
         </td>
     {% endif %}
 
-    {% if e.meteo is null %}
+    {% if e.weather is null %}
         <td data-order="-1"></td>
     {% else %}
-        {% set descWeather = ('register.weather.'~e.meteo) | trans %}
+        {% set descWeather = ('register.weather.'~e.weather) | trans %}
 
-        <td data-order="{{ e.meteo }}" data-serch="{{ descWeather }}">
-            <img src='/images/weather/{{ e.meteo }}.png' title="{{ descWeather }}">
+        <td data-order="{{ e.weather }}" data-serch="{{ descWeather }}">
+            <img src='/images/weather/{{ e.weather }}.png' title="{{ descWeather }}">
         </td>
     {% endif %}
 
