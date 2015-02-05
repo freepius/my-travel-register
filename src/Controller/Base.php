@@ -25,7 +25,7 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class Base implements ControllerProviderInterface
 {
-    public function __construct(\Freepius\Application $app)
+    public function __construct(\Freepius\Silex\Application $app)
     {
         $this->app = $app;
     }

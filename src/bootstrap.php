@@ -11,7 +11,7 @@ $loader = require ROOT.'/vendor/autoload.php';
 
 $loader->addPsr4('Freepius\\', ROOT.'/freepius');
 
-$app = new \Freepius\Application();
+$app = new \Freepius\Silex\Application();
 
 /* Locale of the application */
 \Locale::setDefault('fr_FR.UTF-8');
@@ -57,7 +57,7 @@ $app->register(new \Silex\Provider\TranslationServiceProvider());
 $app->register(new \Silex\Provider\SecurityServiceProvider());
 
 /* freepius/php-asset */
-$app->register(new \Freepius\Asset\ServiceProvider(), [
+$app->register(new \Freepius\Pimple\Provider\AssetServiceProvider(), [
     'asset.cdn.use'     => ! $app['debug'],
     'asset.config'      => [
         'base.url' => BASE_URL_FOR_ASSET,
