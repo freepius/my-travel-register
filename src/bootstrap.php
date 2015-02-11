@@ -100,7 +100,14 @@ $app['security.firewalls'] = [
     ],
 ];
 
-$app['security.access_rules'] = [['^/(admin|register)', 'ROLE_ADMIN']];
+$app['security.access_rules'] =
+[[
+    '^/admin'                .'|'.
+    '^/register/?'           .'|'.
+    '^/register/(home|post)' .'|'.
+    '^/register/.+/delete'
+,
+'ROLE_ADMIN']];
 
 
 /*************************************************
