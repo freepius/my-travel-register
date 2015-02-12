@@ -36,5 +36,6 @@ return ['register' => [
         5 => 'Heavy rain',
         6 => 'Storm',
         7 => 'Fog',
+        8 => 'Snow',
     ],
 ]];

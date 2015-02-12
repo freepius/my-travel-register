@@ -36,5 +36,6 @@ return ['register' => [
         5 => 'Pluie forte',
         6 => 'Orage, tempête',
         7 => 'Brouillard',
+        8 => 'Neige',
     ],
 ]];
