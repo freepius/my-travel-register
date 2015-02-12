@@ -103,7 +103,7 @@ $app['security.firewalls'] = [
 $app['security.access_rules'] =
 [[
     '^/admin'                .'|'.
-    '^/register/?'           .'|'.
+    '^/register/?$'          .'|'.
     '^/register/(home|post)' .'|'.
     '^/register/.+/delete'
 ,
