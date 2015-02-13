@@ -2,6 +2,8 @@
 
 {% extends "layout.html.twig" %}
 
+{% from "macros.twig" import cancel_link %}
+
 {% from "register/macros.twig" import register_table %}
 
 {% import "carto.twig" as carto %}
@@ -15,7 +17,7 @@
     <style>
         #map { height: 400px; }
 
-        header > .actions {
+        header > .actions:nth-child(3) {
             clear: both;
             float: none;
         }
@@ -51,6 +53,10 @@
 
 <header>
     <h1>{{ 'register.home'|trans }}</h1>
+
+    <div class="actions">
+        {{ cancel_link('/admin', 'Retour') }}
+    </div>
 
     <div class="actions">
         <!-- Create register entries -->
