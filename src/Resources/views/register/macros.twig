@@ -9,6 +9,11 @@
 
     {{- e._id | localizeddate('short', 'short') -}}
 
+    {%- if e.distance -%}
+        &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
+        {{- e.distance -}} km
+    {%- endif -%}
+
     {%- if e.temperature or e.weather -%}
         &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
         {{- e.temperature is not null ? (e.temperature ~ '°C ') -}}
@@ -28,6 +33,8 @@
     <td>
         <a class="geoCoords" href="#">{{ e.geoCoords }}</a>
     </td>
+
+    <td>{{ e.distance }}</td>
 
     {% if e.temperature is null %}
         <td data-order="-1"></td>

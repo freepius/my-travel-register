@@ -18,6 +18,7 @@ return [
     //'Actions'                    => '',
     //'add'                        => '',
     //'at'                         => '',
+    //'Back'                       => '',
     //'Bad credentials'            => '',
     //'by date'                    => '',
     //'by tag'                     => '',

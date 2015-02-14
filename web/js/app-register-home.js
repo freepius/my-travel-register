@@ -45,6 +45,7 @@
             columns: [
                 {type: "string"},                     // datetime
                 {type: "string", orderable: false},   // geo coords
+                {type: "num"},                        // distance
                 {type: "num", orderData: [2, 0]},     // temperature
                 {type: "num", orderData: [3, 0]},     // weather
                 {type: "string", orderable: false},   // message

@@ -95,7 +95,7 @@ class Register implements ControllerProviderInterface
             );
 
             foreach ($entries as & $e) {
-                $e = [$e['_id'], $e['geoCoords'], $e['temperature'], $e['weather'], $e['message']];
+                $e = [$e['_id'], $e['geoCoords'], $e['distance'], $e['temperature'], $e['weather'], $e['message']];
                 $e = implode(' # ', $e);
             }
         }
@@ -194,10 +194,11 @@ class Register implements ControllerProviderInterface
      *
      *      multi-SMS format (see isMultiSms() function)
      *      OR
-     *      date # geoCoords # temperature # weather and security code # message
+     *      date # geoCoords # distance # temperature # weather and security code # message
      *
      *      => date          : mandatory ; format = MMDDhhmm (implicitly : year === current year ; seconds === 00)
      *      => geoCoords     : optional  ; if invalid => set to null
+     *      => distance      : optional  ; if invalid => set to null
      *      => temperature   : optional  ; if invalid => set to null
      *      => weather       : optional  ; if invalid => set to null
      *      => security code : mandatory ; one digit === sum of all date digits MOD 10
@@ -284,6 +285,7 @@ class Register implements ControllerProviderInterface
 
         // Clear or correct invalid data
         if (@ $errors['geoCoords'])   { $entry['geoCoords']   = null; }
+        if (@ $errors['distance'])    { $entry['distance']    = null; }
         if (@ $errors['temperature']) { $entry['temperature'] = null; }
         if (@ $errors['weather'])     { $entry['weather']     = null; }
         if (@ $errors['message'])     { $entry['message'] = substr($entry['message'], 0, 500); }

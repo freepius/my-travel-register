@@ -16,6 +16,7 @@ return ['register' => [
 
     'field' => [
         'datetime'    => 'Date et heure',
+        'distance'    => 'Distance',
         'geoCoords'   => 'Coordonnées géo.',
         'message'     => 'Mini-message',
         'temperature' => 'Température',
@@ -25,7 +26,7 @@ return ['register' => [
     'placeholder' => [
         'from'    => 'Début (ex : 2014-01-01)',
         'to'      => 'Fin (ex : 2014-01-31)',
-        'posting' => '2013-08-28 12:42:00 # 42.123456 , -2.987654 # 32 # 6 # Superbe lever de soleil sur fond bleu violacé. Bonne humeur ! :-)',
+        'posting' => '2013-08-28 12:42:00 # 42.123456 , -2.987654 # 6942 # 32 # 6 # Superbe lever de soleil sur fond bleu violacé. Bonne humeur ! :-)',
     ],
 
     'weather' => [

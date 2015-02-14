@@ -18,6 +18,7 @@ return [
     'Actions'                    => 'Actions',
     'add'                        => 'ajouter',
     'at'                         => 'à',
+    'Back'                       => 'Retour',
     'Bad credentials'            => 'Mot de passe erroné',
     'by date'                    => 'par date',
     'by tag'                     => 'par mot-clé',
