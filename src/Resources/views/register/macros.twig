@@ -9,7 +9,7 @@
 
     {{- e._id | localizeddate('short', 'short') -}}
 
-    {%- if e.distance -%}
+    {%- if e.distance is not null -%}
         &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
         {{- e.distance -}}&nbsp;km
     {%- endif -%}
