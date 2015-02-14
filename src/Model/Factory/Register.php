@@ -19,7 +19,7 @@ class Register extends EntityFactory
         return [
             '_id'         => @ $data[0], // the unique datetime !
             'geoCoords'   => @ $data[1],
-            'distance'    => @ $data[2],
+            'distance'    => is_numeric(@ $data[2]) ? (int) $data[2] : null,
             'temperature' => is_numeric(@ $data[3]) ? (int) $data[3] : null,
             'weather'     => is_numeric(@ $data[4]) ? (int) $data[4] : null,
             'message'     => @ $data[5],
