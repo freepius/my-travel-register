@@ -1,19 +1,8 @@
+{% extends "layout-mini.html.twig" %}
+
 {% import "carto.twig" as carto %}
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>{% block title %}My Travel Register{% endblock %}</title>
-
-    <!-- Styles
-    ================================================== -->
-
-    <link href="/css/main.css" rel="stylesheet">
-    {{ css('font-awesome') }}
+{% block stylesheets %}
     {{ carto.cssFull() }}
 
     <style>
@@ -22,16 +11,14 @@
             height: 600px;
         }
     </style>
-</head>
-<body>
-    <div id="map"></div>
+{% endblock %}
 
-    <!-- Javascripts
-    ================================================== -->
-
-    {{ js('jquery') }}
+{% block javascripts %}
     {{ carto.jsFull() }}
     <script src="{{ register_entries_js }}"></script>
     <script src="/js/app-base-map.js"></script>
-</body>
-</html>
+{% endblock %}
+
+{% block main %}
+    <div id="map"></div>
+{% endblock %}

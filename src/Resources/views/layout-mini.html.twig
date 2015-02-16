@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}My Travel Register{% endblock %}</title>
+
+    <!-- Styles
+    ================================================== -->
+    {{ css('font-awesome') }}
+    <link href="/css/main.css" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <!-- Main content
+    ================================================== -->
+    {% block main %}{% endblock %}
+
+    <!-- Javascripts
+    ================================================== -->
+    {{ js('jquery') }}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

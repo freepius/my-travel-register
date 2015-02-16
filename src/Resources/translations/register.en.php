@@ -8,6 +8,7 @@ return ['register' => [
     'home'             => 'Travel register',
     'inError'          => 'One travel register entry   has  errors. Please correct it.|'.
                           '0   travel register entries have errors. Please correct them.',
+    'theLastMessage'   => 'Last mini-message',
     'map'              => 'Show the map',
     'list'             => 'Show the travel register',
     'posting'          => 'Post some entries',

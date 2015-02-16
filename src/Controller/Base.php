@@ -14,6 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  *  -> GLOBAL ACTIONS :
  *      => map
+ *      => mini-map
  *
  *  -> ADMIN ACTIONS :
  *      => admin
@@ -35,8 +36,9 @@ class Base implements ControllerProviderInterface
         $ctrl = $app['controllers_factory'];
 
         // Global actions
-        $ctrl->get('/'   , [$this, 'map']);
-        $ctrl->get('/map', [$this, 'map']);
+        $ctrl->get('/'        , [$this, 'map']);
+        $ctrl->get('/map'     , [$this, 'map']);
+        $ctrl->get('/mini-map', [$this, 'miniMap']);
 
         // Admin routes
         $ctrl->get('/admin'            , [$this, 'admin']);
@@ -60,7 +62,7 @@ class Base implements ControllerProviderInterface
     public function map(Request $request)
     {
         $response = $this->app['http_cache.mongo']->response(
-            $request, 'base.map', ['media', 'register']
+            $request, 'base.map', ['register']
         );
         if ($response->isNotModified($request)) { return $response; }
 
@@ -68,6 +70,34 @@ class Base implements ControllerProviderInterface
 
         return $this->app->render('base/map.html.twig', [
             'register_entries_js' => $registerRepo->getGeoJsFile(),
+        ], $response);
+    }
+
+    /**
+     * CACHE: public ; validation
+     */
+    public function miniMap(Request $request)
+    {
+        $response = $this->app['http_cache.mongo']->response(
+            $request, 'base.mini-map', ['register']
+        );
+        if ($response->isNotModified($request)) { return $response; }
+
+        $registerRepo = $this->app['model.repository.register'];
+
+        // Get the last "geo. entry" of the Travel Register
+        $lastGeoEntry = $registerRepo->getLastGeoEntry();
+
+        // Get the last "message entry" of the Travel Register
+        $lastMsgEntry = $registerRepo->getLastMsgEntry();
+
+        // Get/generate the javascript file containing the travel register entries
+        $geoEntries_js = $registerRepo->getGeoJsFile();
+
+        return $this->app->render('base/mini-map.html.twig', [
+            'lastGeoEntry'   => $lastGeoEntry,
+            'lastMsgEntry'   => $lastMsgEntry,
+            'geoEntries_js'  => $geoEntries_js,
         ], $response);
     }
 

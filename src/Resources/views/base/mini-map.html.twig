@@ -1,0 +1,37 @@
+{% extends "layout-mini.html.twig" %}
+
+{% import "carto.twig" as carto %}
+
+{% from "register/macros.twig" import register_render %}
+
+{% block stylesheets %}
+    {{ carto.cssBase() }}
+
+    <style>
+        #map {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ carto.jsBase() }}
+    <script src="{{ geoEntries_js }}"></script>
+    <script>
+        var currentPlace = [{{ lastGeoEntry.geoCoords | default('0, 0') }}];
+    </script>
+    <script src="/js/app-base-mini-map.js"></script>
+{% endblock %}
+
+{% block main %}
+    <!-- The last travel register entry with message -->
+    <p>
+        <strong>{{ 'register.theLastMessage'|trans }}</strong>
+        <br>
+        {{ register_render(lastMsgEntry) }}
+    </p>
+
+    <!-- Mini-map -->
+    <div id="map"></div>
+{% endblock %}
