@@ -14,6 +14,10 @@
             OSM: new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, CC-BY-SA'
             }),
+            Outdoors: new L.TileLayer('http://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', {
+                attribution: 'Tiles &copy; <a href="http://www.thunderforest.com/outdoors/">Gravitystorm</a>' +
+                             ' / map data <a href="http://osm.org/copyright">OpenStreetMap</a>'
+            }),
             WaterColor: new L.StamenTileLayer('watercolor'),
             BingAerial: new L.BingLayer(window.bingMapsAPIKey)
         },

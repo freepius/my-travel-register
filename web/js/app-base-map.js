@@ -9,7 +9,7 @@
     "use strict";
 
     var map = asCarto.addMap('map', {
-            layer: 'OSM',
+            layer: 'Outdoors',
             controls: {pan: true, scale: true, zoomslider: true}
         }),
 
