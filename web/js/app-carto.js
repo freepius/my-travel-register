@@ -45,17 +45,18 @@
             o.layers.push(this.layers[o.layer]);
 
             // Add ZoomSlider control through options
-
             if (o.controls.zoomslider) {
                 o.zoomsliderControl = true;
                 o.zoomControl = false;
             }
 
             // Initialize a new Leaflet map
-
             map = L.map(id, o);
 
-            map.attributionControl.setPrefix('');
+            // Remove the "Leaflet" copyright (too much space ; sorry)
+            if (map.attributionControl) {
+                map.attributionControl.setPrefix('');
+            }
 
             // Add controls
 
