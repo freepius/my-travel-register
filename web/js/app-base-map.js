@@ -16,7 +16,7 @@
         // Path already traveled
         path = L.polyline(register.geoCoords, {
             clickable : false,
-            color     : '#eca34c',
+            color     : 'orange',
             weight    : 8
         }),
 
@@ -35,8 +35,7 @@
         i,
         currentPlace,
         marker,
-        markers = [],
-        popup = new L.Popup({minWidth: 120, maxWidth: 400});
+        markers = [];
 
     /**
      * Create a marker for each travel register entry.
@@ -65,7 +64,7 @@
     });
 
     // Initially, center the map onto this current place.
-    map.setView(currentPlace.getLatLng(), 5, {reset: true});
+    map.setView(currentPlace.getLatLng(), 6, {reset: true});
 
     /**
      * For each cluster, display (on "mouseover" event) an overview of its markers.
