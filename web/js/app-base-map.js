@@ -16,7 +16,7 @@
         // Path already traveled
         path = L.polyline(register.geoCoords, {
             clickable : false,
-            color     : 'orange',
+            color     : 'darkorange',
             weight    : 8
         }),
 

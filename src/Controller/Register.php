@@ -59,8 +59,6 @@ class Register implements ControllerProviderInterface
         );
         if ($response->isNotModified($request)) { return $response; }
 
-        $registerRepo = $this->app['model.repository.register'];
-
         return $this->app->render('register/home.html.twig', [
             'entries' => $this->getRepository()->find()
         ], $response);
