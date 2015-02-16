@@ -32,6 +32,7 @@
                     layer    : 'WaterColor',
                     layers   : [],
                     controls : {
+                        layers     : true,
                         pan        : false,
                         scale      : false,
                         zoomslider : false
@@ -56,9 +57,11 @@
 
             map.attributionControl.setPrefix('');
 
-            L.control.layers(this.layers).addTo(map);
-
             // Add controls
+
+            if (o.controls.layers) {
+                L.control.layers(this.layers).addTo(map);
+            }
 
             if (o.controls.pan) {
                 L.control.pan().addTo(map);

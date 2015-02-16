@@ -2,8 +2,6 @@
 
 {% import "carto.twig" as carto %}
 
-{% from "register/macros.twig" import register_render %}
-
 {% block stylesheets %}
     {{ carto.cssBase() }}
 {% endblock %}
@@ -18,13 +16,6 @@
 {% endblock %}
 
 {% block main %}
-    <!-- The last travel register entry with message -->
-    <p>
-        <strong>{{ 'register.theLastMessage'|trans }}</strong>
-        <br>
-        {{ register_render(lastMsgEntry) }}
-    </p>
-
     <!-- Mini-map -->
     <div id="map"></div>
 {% endblock %}

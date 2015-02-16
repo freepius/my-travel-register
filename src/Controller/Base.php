@@ -88,15 +88,11 @@ class Base implements ControllerProviderInterface
         // Get the last "geo. entry" of the Travel Register
         $lastGeoEntry = $registerRepo->getLastGeoEntry();
 
-        // Get the last "message entry" of the Travel Register
-        $lastMsgEntry = $registerRepo->getLastMsgEntry();
-
         // Get/generate the javascript file containing the travel register entries
         $geoEntries_js = $registerRepo->getGeoJsFile();
 
         return $this->app->render('base/mini-map.html.twig', [
             'lastGeoEntry'   => $lastGeoEntry,
-            'lastMsgEntry'   => $lastMsgEntry,
             'geoEntries_js'  => $geoEntries_js,
         ], $response);
     }

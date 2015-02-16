@@ -10,7 +10,9 @@
 
     // Map centered on the current place
     var map = asCarto.addMap('map', {
+            attributionControl: false,
             center: currentPlace,
+            controls: { layers: false },
             minZoom: 2,
             maxZoom: 8
         }),
