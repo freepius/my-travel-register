@@ -16,7 +16,7 @@
         // Path already traveled
         path = L.polyline(register.geoCoords, {
             clickable : false,
-            color     : 'blue',
+            color     : '#eca34c',
             weight    : 8
         }),
 
@@ -27,9 +27,9 @@
         }),
 
         // Some icons
-        globeIcon        = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'orange', icon: 'globe'}),
-        envelopeIcon     = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'orange', icon: 'envelope-o'}),
-        currentPlaceIcon = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'red',    icon: 'smile-o'}),
+        globeIcon        = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'darkgreen', icon: 'globe'}),
+        envelopeIcon     = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'darkgreen', icon: 'envelope-o'}),
+        currentPlaceIcon = L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'green',     icon: 'bicycle'}),
 
         // Various variables
         i,
