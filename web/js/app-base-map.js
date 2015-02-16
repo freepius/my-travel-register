@@ -10,7 +10,7 @@
 
     var map = asCarto.addMap('map', {
             layer: 'Outdoors',
-            controls: {pan: true, scale: true, zoomslider: true}
+            controls: {layers: true, pan: true, scale: true, zoomslider: true}
         }),
 
         // Path already traveled
