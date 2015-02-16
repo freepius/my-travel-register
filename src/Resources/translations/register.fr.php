@@ -10,6 +10,7 @@ return ['register' => [
                           '0   entrées au registre de voyage contiennent des erreurs. Corrigez-les.',
     'theLastMessage'   => 'Dernier mini-message',
     'map'              => 'Voir la carte',
+    'miniMap'          => 'Voir la mini-carte',
     'list'             => 'Voir le registre de voyage',
     'posting'          => 'Poster des entrées',
     'updated'          => 'Une entrée  au registre de voyage mise  à jour.|'.

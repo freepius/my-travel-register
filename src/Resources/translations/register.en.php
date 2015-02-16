@@ -10,6 +10,7 @@ return ['register' => [
                           '0   travel register entries have errors. Please correct them.',
     'theLastMessage'   => 'Last mini-message',
     'map'              => 'Show the map',
+    'miniMap'          => 'Show the mini-map',
     'list'             => 'Show the travel register',
     'posting'          => 'Post some entries',
     'updated'          => 'One travel register entry   updated.|'.
