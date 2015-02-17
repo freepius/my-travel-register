@@ -33,11 +33,11 @@
 
     // Show the mini-message
     marker.on('mouseover', function () {
-        $('#last-message').fadeIn(200);
+        $('#mini-message').fadeIn(200);
     });
 
     // Hide the mini-message
-    $('#last-message').mouseleave(function () {
+    $('#mini-message').mouseleave(function () {
         $(this).fadeOut(200);
     });
 
