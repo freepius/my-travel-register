@@ -3,7 +3,7 @@
  */
 
 /*jslint regexp: true */
-/*global L, asCarto, currentPlace, register */
+/*global $, L, asCarto, currentPlace, register */
 
 (function () {
     "use strict";
@@ -25,9 +25,18 @@
         }).addTo(map),
 
         marker = L.marker(currentPlace, {
-            clickable: false,
             icon: L.AwesomeMarkers.icon({prefix: 'fa', markerColor: 'green', icon: 'bicycle'}),
             zIndexOffset: 1000
         }).addTo(map);
+
+    // Show the mini-message
+    marker.on('mouseover', function () {
+        $('#last-message').fadeIn(200);
+    });
+
+    // Hide the mini-message
+    $('#last-message').mouseleave(function () {
+        $(this).fadeOut(200);
+    });
 
 }());

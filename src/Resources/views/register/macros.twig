@@ -1,6 +1,7 @@
 {##
  # Summary :
  #  -> register_render
+ #  -> register_render_2
  #  -> register_table
  #}
 
@@ -14,7 +15,7 @@
         {{- e.distance -}}&nbsp;km
     {%- endif -%}
 
-    {%- if e.temperature or e.weather -%}
+    {%- if (e.temperature is not null) or e.weather -%}
         &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
         {{- e.temperature is not null ? (e.temperature ~ '°C ') -}}
         {{- e.weather                 ? ("<img src='/images/weather/"~e.weather~".png'>") | raw -}}
@@ -24,6 +25,29 @@
 
 {% endspaceless %}
 {% endmacro %}
+
+
+{% macro register_render_2(e) %}
+{% spaceless %}
+
+    {{- e._id | localizeddate('short', 'short') -}}
+
+    {%- if e.distance is not null -%}
+        <br>
+        {{- e.distance -}}&nbsp;km
+    {%- endif -%}
+
+    {%- if (e.temperature is not null) or e.weather -%}
+        &nbsp;&nbsp;<i class='fa fa-caret-right'></i>&nbsp;&nbsp;
+        {{- e.temperature is not null ? (e.temperature ~ '°C ') -}}
+        {{- e.weather                 ? ("<img src='/images/weather/"~e.weather~".png'>") | raw -}}
+    {%- endif -%}
+
+    <br><br>{{- e.message -}}
+
+{% endspaceless %}
+{% endmacro %}
+
 
 {% macro register_table(e) %}
     <td data-order="{{ e._id }}">
