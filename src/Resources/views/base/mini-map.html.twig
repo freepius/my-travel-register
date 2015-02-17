@@ -12,7 +12,7 @@
             height: 150px;
         }
 
-        #last-message {
+        #mini-message {
             width: 260px;
             height: 140px;
             margin: 0;
@@ -20,7 +20,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             font-size: 12px;
             font-weight: bold;
@@ -43,11 +43,9 @@
 {% endblock %}
 
 {% block main %}
-    <!-- The last travel register entry with message -->
-    <div id="last-message">
+    <div id="mini-message">
         {{ register_render_2(lastGeoEntry) }}
     </div>
 
-    <!-- Mini-map -->
     <div id="map"></div>
 {% endblock %}
