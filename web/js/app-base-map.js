@@ -17,6 +17,7 @@
         path = L.polyline(register.geoCoords, {
             clickable : false,
             color     : 'darkorange',
+            opacity   : 0.7,
             weight    : 8
         }),
 

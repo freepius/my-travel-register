@@ -14,13 +14,15 @@
             center: currentPlace,
             controls: { layers: false },
             minZoom: 2,
-            maxZoom: 8
+            maxZoom: 8,
+            zoom: 4
         }),
 
         // Path already traveled
         path = L.polyline(register.geoCoords, {
             clickable : false,
             color     : 'darkorange',
+            opacity   : 0.7,
             weight    : 8
         }).addTo(map),
 
