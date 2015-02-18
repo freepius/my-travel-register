@@ -15,7 +15,7 @@
             controls: { layers: false },
             minZoom: 2,
             maxZoom: 8,
-            zoom: 4
+            zoom: 6
         }),
 
         // Path already traveled

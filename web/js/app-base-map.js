@@ -18,7 +18,7 @@
             clickable : false,
             color     : 'darkorange',
             opacity   : 0.7,
-            weight    : 8
+            weight    : 6
         }),
 
         // Entries of the travel register are clustered
