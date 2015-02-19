@@ -248,13 +248,13 @@ class Register implements ControllerProviderInterface
         // Extract data from SMS body
         $httpEntry = array_map('trim', explode('#', $smsBody));
 
-        if (count($httpEntry) !== 5)
+        if (count($httpEntry) !== 6)
         {
             return sprintf($smsResponse, 'Bad number of parameters: '.count($httpEntry).' found');
         }
 
         // Check the security code
-        $securityCode       = (int) substr(@ $httpEntry[3], -1, 1);       // last char. of 4-th field
+        $securityCode       = (int) substr(@ $httpEntry[4], -1, 1);       // last char. of 5-th field
         $waitedSecurityCode = array_sum(str_split(@ $httpEntry[0])) % 10; // sum of all date digits MOD 10
 
         if ($securityCode !== $waitedSecurityCode)
@@ -269,7 +269,7 @@ class Register implements ControllerProviderInterface
         );
 
         // Remove security code in the weather field
-        $httpEntry[3] = substr($httpEntry[3], 0, -1);
+        $httpEntry[4] = substr($httpEntry[4], 0, -1);
 
         // Try to validate the register entry
         $entry = [];
