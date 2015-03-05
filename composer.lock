@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/freepius/php-asset.git",
-                "reference": "cba9139199b968867d01b28a3ca2fbf314f69099"
+                "reference": "7ba23e4208c0c95ba6ec6598fa1955df4a420d6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/freepius/php-asset/zipball/cba9139199b968867d01b28a3ca2fbf314f69099",
-                "reference": "cba9139199b968867d01b28a3ca2fbf314f69099",
+                "url": "https://api.github.com/repos/freepius/php-asset/zipball/7ba23e4208c0c95ba6ec6598fa1955df4a420d6a",
+                "reference": "7ba23e4208c0c95ba6ec6598fa1955df4a420d6a",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
             ],
             "description": "Various tools to manage Web assets",
             "homepage": "https://github.com/freepius/php-asset",
-            "time": "2015-02-05 14:49:02"
+            "time": "2015-03-04 20:29:48"
         },
         {
             "name": "freepius/php-model",

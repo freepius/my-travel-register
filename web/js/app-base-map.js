@@ -3,14 +3,14 @@
  */
 
 /*jslint regexp: true */
-/*global L, asCarto, register, getClusterLabel, OverlappingMarkerSpiderfier */
+/*global L, register, getClusterLabel, OverlappingMarkerSpiderfier */
 
 (function () {
     "use strict";
 
-    var map = asCarto.addMap('map', {
-            layer: 'Outdoors',
-            controls: {layers: true, pan: true, scale: true, zoomslider: true}
+    var map = L.easyMap('map', {
+            baseLayer: 'Outdoors',
+            controls: {pan: true, scale: true, zoomslider: true}
         }),
 
         // Path already traveled

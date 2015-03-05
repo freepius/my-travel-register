@@ -3,16 +3,16 @@
  */
 
 /*jslint regexp: true */
-/*global $, L, asCarto, currentPlace, register */
+/*global $, L, currentPlace, register */
 
 (function () {
     "use strict";
 
     // Map centered on the current place
-    var map = asCarto.addMap('map', {
-            attributionControl: false,
+    var map = L.easyMap('map', {
+            baseLayer: 'WaterColor',
             center: currentPlace,
-            controls: { layers: false },
+            controls: { attribution: false, layers: false },
             minZoom: 2,
             maxZoom: 8,
             zoom: 6
