@@ -3,12 +3,12 @@
  */
 
 /*jslint regexp: true */
-/*global $, L, asCarto, document, register, window */
+/*global $, L, document, register, window */
 
 (function () {
     "use strict";
 
-    var map = asCarto.addMap('map', {
+    var map = L.easyMap('map', {
             layer: 'OSM',
             minZoom: 2,
             maxZoom: 8
